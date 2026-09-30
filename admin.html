@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>管理者ガイド｜ふくのいもDB</title>
+<meta name="description" content="商品・スタッフの登録、ダッシュボードの見方、月次点検、触ってはいけない箇所をまとめた管理者向けガイド。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@500;700;900&family=Noto+Sans+JP:wght@400;500;700&family=Roboto+Mono:wght@500;700&display=swap">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body class="admin">
+
+<header class="masthead">
+  <div class="inner">
+    <p class="eyebrow">FUKUNOIMO DB / ADMIN</p>
+    <h1>管理者ガイド</h1>
+    <p class="lede">商品やスタッフの登録、集計の確認、月に一度の点検など、現場の入力以外の作業をまとめています。</p>
+  </div>
+</header>
+
+<nav class="toc" aria-label="目次">
+  <ul>
+    <li><a href="#role">管理者が行うこと</a></li>
+    <li><a href="#product">商品を登録する</a></li>
+    <li><a href="#staff">スタッフを登録する</a></li>
+    <li><a href="#retire">使わなくなったもの</a></li>
+    <li><a href="#dashboard">集計の見方</a></li>
+    <li><a href="#monthly">月に一度の点検</a></li>
+    <li><a href="#dont">触らないこと</a></li>
+    <li><a href="#trouble">困ったときは</a></li>
+  </ul>
+</nav>
+
+<div class="wrap">
+
+  <section id="role">
+    <div class="sec-head">
+      <span class="sec-num">01</span>
+      <h2>管理者が行うこと</h2>
+    </div>
+    <p>現場のスタッフは、作業実績の入力だけを行います。次の作業は管理者の担当です。</p>
+
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr><th>やること</th><th>いつ</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>商品の登録・変更</td><td>新商品を出すとき</td></tr>
+          <tr><td>スタッフの登録・変更</td><td>入退社・異動のとき</td></tr>
+          <tr><td>工程と目安時間の設定</td><td>商品登録とセットで</td></tr>
+          <tr><td>実績データの点検</td><td>月に一度</td></tr>
+          <tr><td>集計の確認</td><td>随時</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="note">
+      <b>現場スタッフ向けの案内は別にあります</b><br>
+      実績の入力方法については <a href="staff.html">作業実績の入力ガイド</a> をご覧ください。現場にはそちらを配布してください。
+    </div>
+  </section>
+
+  <section id="product">
+    <div class="sec-head">
+      <span class="sec-num">02</span>
+      <h2>新しい商品を登録する</h2>
+    </div>
+    <p>商品を1つ増やすときは、<b>3つをセットで登録します。</b>1つでも欠けると、集計が正しく出ません。</p>
+
+    <ol class="steps big">
+      <li>
+        <span>
+          <strong>商品を登録する</strong>
+          メニューの「商品登録」から、商品名とカテゴリを入れます。<span class="tbl-lab">M_商品</span>
+          <span class="sub">カテゴリは、すでにある分類から選んでください。同じ意味でも「和菓子」「和菓子類」のように書き方が違うと、集計で別の分類として数えられます。</span>
+        </span>
+      </li>
+      <li>
+        <span>
+          <strong>その商品をどの工程でつくるかを紐付ける</strong>
+          蒸す、包む、箱詰めなど、必要な工程を登録します。<span class="tbl-lab">R_商品構成_BOM / R_半製品工程</span>
+          <span class="sub">これを登録しておくと、現場で実績を入力するときにその商品の工程が選べるようになります。</span>
+        </span>
+      </li>
+      <li>
+        <span>
+          <strong>その工程の「1個あたりの目安時間」を設定する</strong>
+          標準タクトタイム（秒／個）を入れます。<span class="tbl-lab">M_工程</span>
+          <span class="sub">たとえば「箱詰めは1個あたり15秒」のような値です。</span>
+        </span>
+      </li>
+    </ol>
+
+    <div class="note warn">
+      <b>3つめが最も抜けやすく、影響も大きい箇所です</b><br>
+      標準タクトタイムが未設定だと「標準比」が計算されず、ダッシュボードの目標達成判定に<b>その商品だけ載らなくなります</b>。目安時間がまだ決まっていない場合は、似た工程の値を仮で入れておき、実績が溜まってから見直してください。
+    </div>
+
+    <h3 class="sub-head">登録したら確認してください</h3>
+    <ul class="checks">
+      <li>現場のアプリで「新規作業登録」を開き、商品の一覧に新しい商品が出てくるか</li>
+      <li>その商品を選んだとき、工程が選べるか</li>
+      <li>実績を1件試しに入力し、ダッシュボードで標準比が出るか</li>
+    </ul>
+    <p style="margin-top:12px">出てこない場合は、しばらく待ってからアプリを開き直すと表示されます。</p>
+  </section>
+
+  <section id="staff">
+    <div class="sec-head">
+      <span class="sec-num">03</span>
+      <h2>新しいスタッフを登録する</h2>
+    </div>
+    <p>メニューの「スタッフ登録」から登録します。<span class="tbl-lab">M_スタッフ</span></p>
+
+    <div class="fields">
+      <div class="field">
+        <div class="f-name"><span class="req">必須</span>スタッフ名</div>
+        <div class="f-do">ここで登録した名前が、そのまま集計の人別表示に出ます。</div>
+      </div>
+      <div class="field">
+        <div class="f-name"><span class="req opt">任意</span>メールアドレス</div>
+        <div class="f-do">アプリを使う方のみ。使わない方は空欄で構いません。</div>
+      </div>
+      <div class="field">
+        <div class="f-name"><span class="req opt">任意</span>雇用形態・所属グループ</div>
+        <div class="f-do">集計を絞り込むときに使います。</div>
+      </div>
+    </div>
+
+    <div class="note">
+      <b>登録後は、本人に自分の名前が選べるか確認してもらってください</b><br>
+      実績にスタッフが紐付いていないと、人別の集計に載りません。現在すでに、スタッフが未設定のまま登録された記録が残っています。運用開始後は必ず選んでもらうようにしてください。
+    </div>
+  </section>
+
+  <section id="retire">
+    <div class="sec-head">
+      <span class="sec-num">04</span>
+      <h2>使わなくなった商品・退職したスタッフ</h2>
+    </div>
+
+    <div class="dont">
+      <ul>
+        <li>
+          <div>
+            <b>一覧から削除しないでください</b>
+            <span>過去の実績は、商品やスタッフとつながった状態で保存されています。削除すると、以前の記録から名前が消えて空欄になります。去年の実績を振り返ったときに、何をつくった記録なのか分からなくなります。</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <h3 class="sub-head">正しい対応</h3>
+    <p>そのまま残しておいてください。使わなくなっただけであれば、残っていても集計に影響はありません。</p>
+    <p>選択肢に出てこないようにしたい場合は、「今は使わない」という印をつけて非表示にする仕組みの追加が必要です。現時点では未実装のため、必要になったらご相談ください。</p>
+  </section>
+
+  <section id="dashboard">
+    <div class="sec-head">
+      <span class="sec-num">05</span>
+      <h2>集計の見方</h2>
+    </div>
+    <p>パソコンのブラウザから、集計されたグラフを確認できます。画面上部の日付欄で期間を切り替えると、その期間だけの集計に変わります。</p>
+
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr><th>表示されるもの</th><th>意味</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>総生産数</td><td>良品と不良を合わせた製造個数</td></tr>
+          <tr><td>良品数</td><td>良品として仕上がった個数</td></tr>
+          <tr><td>不良率</td><td>つくった数のうち、不良だった割合</td></tr>
+          <tr><td>標準比</td><td>目安の時間と比べたペース。<b>100%が目安どおり</b>、超えると目安より速い</td></tr>
+          <tr><td>日別の推移</td><td>日ごとの製造個数の変化</td></tr>
+          <tr><td>商品別・人別</td><td>どの商品・どの人がどれだけつくったか</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 class="sub-head">数字が思ったとおりに出ないとき</h3>
+    <ul class="checks">
+      <li>期間の指定が正しいか</li>
+      <li>実績の入力漏れがないか（作業実績一覧で確認）</li>
+      <li>標準比が空欄の商品はないか（その工程の目安時間が未設定の可能性）</li>
+      <li>同じ作業が二重に登録されていないか</li>
+    </ul>
+  </section>
+
+  <section id="monthly">
+    <div class="sec-head">
+      <span class="sec-num">06</span>
+      <h2>月に一度の点検</h2>
+    </div>
+    <p>放っておくとデータが荒れていくので、月末に次を確認してください。5分程度で終わります。</p>
+
+    <ul class="checks">
+      <li>作業実績一覧を月末に眺め、入力漏れや重複がないか</li>
+      <li>スタッフが未設定のままの記録がないか</li>
+      <li>商品が未設定のままの記録がないか</li>
+    </ul>
+
+    <h3 class="sub-head">四半期ごと</h3>
+    <ul class="checks">
+      <li>標準タクトタイムが実績と大きくずれていないか。ずれていれば見直す</li>
+      <li>使っていない商品・スタッフの棚卸し（削除ではなく、非表示化の検討）</li>
+    </ul>
+  </section>
+
+  <section id="dont">
+    <div class="sec-head">
+      <span class="sec-num">07</span>
+      <h2>触らないでください</h2>
+    </div>
+
+    <div class="dont">
+      <ul>
+        <li>
+          <div>
+            <b>元になっている表を直接編集する</b>
+            <span>列の追加・削除・並べ替え、行の挿入や削除を行うと、アプリと集計が同時に動かなくなります。列を追加したい場合は必ずご相談ください。アプリ側で読み込み直す作業が必要です。</span>
+          </div>
+        </li>
+        <li>
+          <div>
+            <b>自動計算されている列に手入力する</b>
+            <span>実績タクトと標準比は、入力された時刻から自動で計算されています。手で書き換えると計算式が消え、それ以降の記録で数値が出なくなります。</span>
+          </div>
+        </li>
+        <li>
+          <div>
+            <b>カテゴリを自由な言葉で新しく入力する</b>
+            <span>既存の表記に合わせてください。書き方が分かれると、カテゴリ別の集計が分裂します。</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="trouble">
+    <div class="sec-head">
+      <span class="sec-num">08</span>
+      <h2>困ったときは</h2>
+    </div>
+
+    <ul class="cases">
+      <li>
+        <p class="case-q">追加した商品が、現場のアプリに出てこない</p>
+        <p class="case-a">アプリを一度閉じて開き直してください。それでも出てこない場合は、商品の登録が保存されていない可能性があります。</p>
+      </li>
+      <li>
+        <p class="case-q">特定の商品だけ標準比が空欄になる</p>
+        <p class="case-a">その商品の工程に、標準タクトタイムが設定されていません。第2章の3つめを確認してください。</p>
+      </li>
+      <li>
+        <p class="case-q">アプリが「テーブルを読み込めない」と出る</p>
+        <p class="case-a">元になっている表の権限、シート名、列の構成が変わった可能性があります。ご連絡ください。</p>
+      </li>
+      <li>
+        <p class="case-q">集計のグラフだけ表示されなくなった</p>
+        <p class="case-a">集計画面がデータを読む権限が切れている可能性があります。ご連絡ください。</p>
+      </li>
+      <li>
+        <p class="case-q">人別の集計に「未設定」が大きく出る</p>
+        <p class="case-a">スタッフを選ばずに登録された記録です。作業実績一覧から該当の記録を開き、スタッフを設定してください。</p>
+      </li>
+    </ul>
+  </section>
+
+  <div class="footer">
+    <h2>ご連絡いただくときは</h2>
+    <p>「どの画面で」「何をしたら」「どうなったか」の3つと、できれば<b>画面の写真</b>を添えてください。原因の特定が早くなります。</p>
+    <a class="backlink" href="index.html">← ガイド一覧にもどる</a>
+    <p class="callsign">ふくのいもDB 管理者ガイド／第1版</p>
+  </div>
+
+</div>
+</body>
+</html>

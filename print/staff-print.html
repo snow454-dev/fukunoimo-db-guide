@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>入力ガイド</title>
+<link rel="stylesheet" href="print.css">
+</head>
+<body>
+
+
+<header class="masthead">
+  
+    <p class="eyebrow">FUKUNOIMO DB / SHOPFLOOR</p>
+    <h1>作業実績の入力ガイド</h1>
+    <p class="lede">入力した記録から、日ごとの製造数と作業のペースが自動で集計されます。このとおりに入れていただければ大丈夫です。</p>
+</header>
+
+
+
+
+
+  <section id="route">
+    <div class="sec-head">
+      <span class="sec-num">01</span>
+      <h2>入力のやり方は2つ。どちらでも構いません</h2>
+    </div>
+    <p>作業を<b>始める前</b>に入力するか、<b>終わったあと</b>にまとめて入力するかの違いです。どちらで入れても、集計される内容は同じです。</p>
+
+    <div class="routes">
+      <div class="route">
+        <p class="route-tag">A</p>
+        <h3>タイマーを使う</h3>
+        <p class="when">これから作業を始めるとき。かかった時間を自動で計ってくれます。</p>
+        <ol class="steps">
+          <li><span><span class="btn-lab">新規作業登録</span> を開き、日付・対象種別・商品・工程を入れて保存</span></li>
+          <li><span><span class="btn-lab">▶スタート</span> を押す<span class="sub">ここから時間の計測が始まります</span></span></li>
+          <li><span>作業する<span class="sub">この間、アプリは閉じても大丈夫です</span></span></li>
+          <li><span><span class="btn-lab">■終了</span> を押し、良品数・不良数を入れて保存</span></li>
+        </ol>
+      </div>
+
+      <div class="route alt">
+        <p class="route-tag">B</p>
+        <h3>タイマーを使わない</h3>
+        <p class="when">作業が終わったあとで入力するとき。1つの画面で全部入れられます。</p>
+        <ol class="steps">
+          <li><span><span class="btn-lab">タイマーを使わず登録</span> を押す</span></li>
+          <li><span>1画面にすべての項目が出るので、上から入れていく<span class="sub">開始時刻・終了時刻も自分で入力します</span></span></li>
+          <li><span>保存して完了</span></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section id="fields">
+    <div class="sec-head">
+      <span class="sec-num">02</span>
+      <h2>必ず入れる項目</h2>
+    </div>
+
+    <div class="fields">
+      <div class="field">
+        <div class="f-name"><span class="req">必須</span>日付</div>
+        <div class="f-do">作業をした日。今日ならそのままで大丈夫です。</div>
+        <div class="f-risk">空欄だと集計に出てきません</div>
+      </div>
+      <div class="field">
+        <div class="f-name"><span class="req">必須</span>自分の名前</div>
+        <div class="f-do">スタッフの一覧から自分を選びます。</div>
+        <div class="f-risk">選び忘れると、誰の実績か分からない記録になります</div>
+      </div>
+      <div class="field">
+        <div class="f-name"><span class="req">必須</span>対象種別</div>
+        <div class="f-do">「商品」か「半製品」かを選びます。</div>
+        <div class="f-risk">選ばないと、次の商品の一覧が出てきません</div>
+      </div>
+      <div class="field">
+        <div class="f-name"><span class="req">必須</span>商品／半製品</div>
+        <div class="f-do">つくったものを一覧から選びます。</div>
+      </div>
+      <div class="field">
+        <div class="f-name"><span class="req">必須</span>工程</div>
+        <div class="f-do">行った作業。蒸す、包む、箱詰め など。</div>
+        <div class="f-risk">選ばないと、作業のペースが計算できません</div>
+      </div>
+      <div class="field">
+        <div class="f-name"><span class="req">必須</span>開始時刻・終了時刻</div>
+        <div class="f-do">だいたいの時刻で構いません。9:00、11:30 のような形です。</div>
+        <div class="f-risk">空欄はダメです。かかった時間が出なくなります</div>
+      </div>
+      <div class="field">
+        <div class="f-name"><span class="req">必須</span>良品数</div>
+        <div class="f-do">できあがった良品の個数。</div>
+      </div>
+      <div class="field">
+        <div class="f-name"><span class="req">必須</span>不良数</div>
+        <div class="f-do">不良だった個数。<b>なければ 0 と入れます。</b></div>
+        <div class="f-risk">空欄と 0 は別の扱いです。必ず 0 を入れてください</div>
+      </div>
+      <div class="field">
+        <div class="f-name"><span class="req opt">任意</span>中断フラグ・中断理由</div>
+        <div class="f-do">昼休みや呼び出しで手が止まったときだけ入れます。</div>
+      </div>
+    </div>
+
+    <div class="note">
+      <b>時刻をきちんと入れていただく理由</b><br>
+      入力された時間から、1個あたり何秒かかったかが自動で計算され、目安の時間と比べた「標準比」が出ます。<b>100%＝目安どおりのペース</b>です。時刻が空欄だと、この数字がその作業だけ出なくなります。
+    </div>
+  </section>
+
+  <section id="cases">
+    <div class="sec-head">
+      <span class="sec-num">03</span>
+      <h2>こんなときは</h2>
+    </div>
+
+    <ul class="cases">
+      <li>
+        <p class="case-q">タイマーを止め忘れた</p>
+        <p class="case-a">「作業実績一覧」からその記録を開き、終了時刻を実際の時刻に直してください。</p>
+      </li>
+      <li>
+        <p class="case-q">個数を間違えて入力した</p>
+        <p class="case-a">記録を開いて鉛筆マーク（編集）から直してください。<b>削除ではなく編集で直します。</b>削除すると集計からその分が丸ごと消えます。</p>
+      </li>
+      <li>
+        <p class="case-q">同じ作業を2回登録してしまった</p>
+        <p class="case-a">片方を削除してください。そのままだと製造個数が2倍に数えられてしまいます。</p>
+      </li>
+      <li>
+        <p class="case-q">つくった商品が一覧に出てこない</p>
+        <p class="case-a">アプリをいったん閉じて開き直してください。それでも出てこない場合は、商品の登録がまだかもしれません。担当者にご連絡ください。</p>
+      </li>
+      <li>
+        <p class="case-q">電波が届かない場所で作業している</p>
+        <p class="case-a">その場で入力して構いません。電波が戻ったときに自動で送信されます。画面の上に送信待ちの表示が出たら、消えるまで待ってください。</p>
+      </li>
+      <li>
+        <p class="case-q">保存ボタンが押せない</p>
+        <p class="case-a">入っていない必須項目があります。赤く表示されている項目を確認してください。</p>
+      </li>
+    </ul>
+  </section>
+
+  <section id="dont">
+    <div class="sec-head">
+      <span class="sec-num">04</span>
+      <h2>やらないでください</h2>
+    </div>
+
+    <div class="dont">
+      <ul>
+        <li>
+          <div>
+            <b>商品やスタッフを一覧から削除する</b>
+            <span>過去の記録とつながっています。消すと以前の記録から名前が消えて、何をつくった記録か分からなくなります。使わなくなっただけなら、そのまま残しておいてください。</span>
+          </div>
+        </li>
+        <li>
+          <div>
+            <b>開始時刻・終了時刻を空欄のまま保存する</b>
+            <span>かかった時間が計算できず、ペースの集計に出てこなくなります。だいたいの時刻で構わないので、必ず入れてください。</span>
+          </div>
+        </li>
+        <li>
+          <div>
+            <b>同じ作業をもう一度登録する</b>
+            <span>保存できたか不安なときは、新しく登録し直さずに「作業実績一覧」で確認してください。二重に登録すると、製造個数が2倍に数えられます。</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <div class="footer">
+    <h2>うまくいかないときは</h2>
+    <p>「どの画面で」「何をしたら」「どうなったか」の3つと、できれば<b>画面の写真</b>を添えてご連絡ください。原因がすぐに分かります。</p>
+    <p class="callsign">ふくのいもDB 入力ガイド／第1版</p>
+  </div>
+</body>
+</html>

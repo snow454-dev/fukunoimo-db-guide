@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ふくのいもDB ガイド</title>
+<meta name="description" content="生産管理システム「ふくのいもDB」の使い方。現場スタッフ向けと管理者向けの2種類があります。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@500;700;900&family=Noto+Sans+JP:wght@400;500;700&family=Roboto+Mono:wght@500;700&display=swap">
+<link rel="stylesheet" href="assets/style.css">
+<style>
+.pick{display:grid;gap:16px;margin-top:8px}
+@media(min-width:620px){.pick{grid-template-columns:1fr 1fr}}
+.card{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+  background:var(--surface);
+  border:1px solid var(--line);
+  border-top:6px solid var(--indigo);
+  border-radius:3px;
+  padding:22px 20px 20px;
+  text-decoration:none;
+  color:inherit;
+  min-width:0;
+}
+.card.for-admin{border-top-color:var(--bronze)}
+.card:hover{border-color:var(--ink-3)}
+.card:focus-visible{outline:2px solid var(--indigo);outline-offset:2px}
+.card-tag{
+  font-family:var(--font-mono);
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.14em;
+  color:var(--indigo);
+  margin:0;
+}
+.card.for-admin .card-tag{color:var(--bronze)}
+.card h2{
+  font-family:var(--font-display);
+  font-weight:700;
+  font-size:21px;
+  line-height:1.4;
+  margin:0;
+}
+.card p{font-size:13.5px;line-height:1.75;color:var(--ink-2);margin:0}
+.card ul{
+  margin:4px 0 0;
+  padding-left:18px;
+  font-size:13px;
+  line-height:1.8;
+  color:var(--ink-2);
+}
+.card .go{
+  font-size:13.5px;
+  font-weight:700;
+  color:var(--indigo);
+  margin-top:6px;
+}
+.card.for-admin .go{color:var(--bronze)}
+.pdfs{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:10px;
+}
+.pdfs a{
+  font-size:13px;
+  font-weight:700;
+  text-decoration:none;
+  color:var(--ink);
+  background:var(--surface);
+  border:1px solid var(--line);
+  border-radius:3px;
+  padding:8px 13px;
+}
+.pdfs a:hover{border-color:var(--ink-3)}
+.pdfs a:focus-visible{outline:2px solid var(--indigo);outline-offset:1px}
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="inner">
+    <p class="eyebrow">FUKUNOIMO DB</p>
+    <h1>ふくのいもDB<br>ガイド</h1>
+    <p class="lede">作業実績を記録し、日ごとの製造数と作業のペースを集計するシステムです。ご自身の役割に合うガイドをお読みください。</p>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <section style="margin-top:34px">
+    <div class="pick">
+      <a class="card" href="staff.html">
+        <p class="card-tag">現場スタッフ向け</p>
+        <h2>作業実績の入力ガイド</h2>
+        <p>アプリで作業実績を入力する方向けです。</p>
+        <ul>
+          <li>入力の2つのやり方</li>
+          <li>必ず入れる項目</li>
+          <li>間違えたときの直し方</li>
+        </ul>
+        <p class="go">読む →</p>
+      </a>
+
+      <a class="card for-admin" href="admin.html">
+        <p class="card-tag">管理者向け</p>
+        <h2>管理者ガイド</h2>
+        <p>商品やスタッフを登録し、集計を確認する方向けです。</p>
+        <ul>
+          <li>商品を登録する（3つセット）</li>
+          <li>集計の見方と月次点検</li>
+          <li>触ってはいけない箇所</li>
+        </ul>
+        <p class="go">読む →</p>
+      </a>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <span class="sec-num">PDF</span>
+      <h2>印刷して使う</h2>
+    </div>
+    <p>現場に貼る・配るための印刷版です。A4縦で、そのまま印刷できます。</p>
+    <div class="pdfs">
+      <a href="pdf/staff-guide.pdf">作業実績の入力ガイド（PDF・3ページ）</a>
+      <a href="pdf/admin-guide.pdf">管理者ガイド（PDF）</a>
+    </div>
+  </section>
+
+  <div class="footer">
+    <h2>うまくいかないときは</h2>
+    <p>「どの画面で」「何をしたら」「どうなったか」の3つと、できれば<b>画面の写真</b>を添えてご連絡ください。</p>
+    <p class="callsign">ふくのいもDB ガイド／第1版</p>
+  </div>
+
+</div>
+</body>
+</html>
